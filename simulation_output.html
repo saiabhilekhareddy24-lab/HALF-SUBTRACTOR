@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half Subtractor - Simulation Output</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        header {
+            background: #24292f;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+        }
+
+        .card {
+            background: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #0969da;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #0969da;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f6f8fa;
+        }
+
+        .success {
+            background: #dafbe1;
+            color: #116329;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .terminal {
+            background: #161b22;
+            color: #7ee787;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .formula {
+            background: #f6f8fa;
+            padding: 15px;
+            border-left: 5px solid #0969da;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 18px;
+        }
+
+        .waveform {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        svg {
+            min-width: 700px;
+            width: 100%;
+            height: 300px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .signal {
+            stroke: #0969da;
+            stroke-width: 3;
+            fill: none;
+        }
+
+        .grid {
+            stroke: #ddd;
+            stroke-width: 1;
+        }
+
+        .label {
+            font-size: 14px;
+            fill: #222;
+            font-weight: bold;
+        }
+
+        .time {
+            font-size: 12px;
+            fill: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin: 30px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Half Subtractor</h1>
+        <p>Verilog HDL Simulation Output</p>
+    </header>
+
+    <div class="card">
+        <h2>Simulation Status</h2>
+
+        <div class="success">
+            ✓ Simulation completed successfully
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Boolean Expressions</h2>
+
+        <div class="formula">
+            Difference = A XOR B
+        </div>
+
+        <div class="formula">
+            Borrow = NOT(A) AND B
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Truth Table</h2>
+
+        <table>
+            <tr>
+                <th>Time (ns)</th>
+                <th>A</th>
+                <th>B</th>
+                <th>Difference</th>
+                <th>Borrow</th>
+            </tr>
+
+            <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+
+            <tr>
+                <td>10</td>
+                <td>0</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+
+            <tr>
+                <td>20</td>
+                <td>1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+
+            <tr>
+                <td>30</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Console Simulation Output</h2>
+
+        <div class="terminal">========================================
+       HALF SUBTRACTOR SIMULATION
+========================================
+Time   A B | Difference Borrow
+----------------------------------------
+0      0 0 |     0        0
+10     0 1 |     1        1
+20     1 0 |     1        0
+30     1 1 |     0        0
+----------------------------------------
+Simulation completed successfully.</div>
+    </div>
+
+    <div class="card">
+        <h2>Waveform</h2>
+
+        <div class="waveform">
+
+            <svg viewBox="0 0 800 300"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <!-- Grid -->
+                <line class="grid" x1="120" y1="40" x2="120" y2="260"/>
+                <line class="grid" x1="280" y1="40" x2="280" y2="260"/>
+                <line class="grid" x1="440" y1="40" x2="440" y2="260"/>
+                <line class="grid" x1="600" y1="40" x2="600" y2="260"/>
+
+                <!-- Signal labels -->
+                <text class="label" x="20" y="75">A</text>
+                <text class="label" x="20" y="125">B</text>
+                <text class="label" x="20" y="175">Difference</text>
+                <text class="label" x="20" y="225">Borrow</text>
+
+                <!-- A: 0 0 1 1 -->
+                <path class="signal"
+                      d="M40 85 H120
+                         V85 H280
+                         V55 H440
+                         H600"/>
+
+                <!-- B: 0 1 0 1 -->
+                <path class="signal"
+                      d="M40 135 H120
+                         V105 H280
+                         V135 H440
+                         V105 H600"/>
+
+                <!-- Difference: 0 1 1 0 -->
+                <path class="signal"
+                      d="M40 185 H120
+                         V155 H280
+                         H440
+                         V185 H600"/>
+
+                <!-- Borrow: 0 1 0 0 -->
+                <path class="signal"
+                      d="M40 235 H120
+                         V205 H280
+                         V235 H600"/>
+
+                <!-- Time labels -->
+                <text class="time" x="110" y="280">0 ns</text>
+                <text class="time" x="265" y="280">10 ns</text>
+                <text class="time" x="425" y="280">20 ns</text>
+                <text class="time" x="585" y="280">30 ns</text>
+
+            </svg>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Result</h2>
+
+        <p>
+            The Half Subtractor was successfully simulated for all four
+            possible combinations of inputs A and B. The simulation results
+            match the expected truth table.
+        </p>
+
+        <p>
+            Therefore, the Verilog implementation of the Half Subtractor
+            is verified successfully.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    Half Subtractor Project | Verilog HDL
+</footer>
+
+</body>
+</html>
